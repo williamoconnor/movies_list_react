@@ -1,0 +1,61 @@
+{
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+
+	"env": {
+		"browser": true,
+		"es6": true,
+		"jest": true
+	},
+
+	"globals": {
+		"__DEV__": false,
+		"__ERROR_REPORTING__": false,
+		"__SENTRY_KEY__": false,
+		"__SENTRY_PROJECT__": false,
+		"__VERSION__": false,
+		"__webpack_public_path__": true,
+		"ga": false
+	},
+
+	"rules": {
+		"arrow-body-style": 0,
+		"arrow-parens": 0,
+		"camelcase": [0],
+		"class-methods-use-this": 0,
+		"comma-dangle": [1, {
+			"arrays": "always-multiline",
+			"objects": "always-multiline",
+			"imports": "ignore",
+			"exports": "ignore",
+			"functions": "ignore"
+		}],
+		"global-require": 0,
+		"import/extensions": 0,
+		"import/first": 0,
+		"import/no-dynamic-require": 0,
+		"import/no-extraneous-dependencies": 0,
+		"import/no-unresolved": [2, { "ignore": ["\\.scss$"] }],
+		"import/prefer-default-export": 0,
+		"indent": [1, "tab"],
+		"max-len": 0,
+		"no-console": 1,
+		"no-else-return": 0,
+		"no-plusplus": 0,
+		"no-tabs": 0,
+		"no-underscore-dangle": 0,
+		"react/forbid-prop-types": 0,
+		"react/style-prop-object": 0,
+		"react/jsx-boolean-value": 0,
+		"react/jsx-closing-bracket-location": [1, { "location": "after-props" }],
+		"react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": 0,
+		"react/jsx-no-bind": [1, {
+			"ignoreRefs": true,
+			"allowArrowFunctions": false,
+			"allowBind": false
+		}],
+		"react/prefer-stateless-function": 0
+	}
+}

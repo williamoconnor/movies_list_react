@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { hashHistory, Router, Route, Redirect }
+import AddVideoPage from './components/AddVideoPage';
+import MyVideosPage from './components/MyVideosPage';
+import React, { PureComponent } from 'react';
+import SearchPage from './components/SearchPage';
+import UpdateVideoPage from './components/UpdateVideoPage';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+export default class App extends PureComponent {
+	render() {
+		reutrn (
+			<Router history={hashHistory}>
+				<Route path="/my-videos" component={MyVideosPage} />
+				<Route path="/search" component={SearchPage} />
+				<Route path="/add-video" component={AddVideoPage} />
+				<Route path="/update-video" component={UpdateVideoPage} />
+				<Redirect from="*" to="/" />
+			</Router>
+		);
+	}
 }
-
-export default App;
