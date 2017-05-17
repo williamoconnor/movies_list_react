@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite';
 
-export default const appStyles = StyleSheet.create({
+export default StyleSheet.create({
 
 });

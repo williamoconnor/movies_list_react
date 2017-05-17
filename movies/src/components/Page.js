@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import { css, StyleSheet } from 'aphrodite';
 
 const styles = StyleSheet.create({
@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
 });
 
 export default class Page extends PureComponent {
+	static propTypes = {
+		children: PropTypes.node.isRequired,
+	};
+
 	render() {
 		return (
 			<div className={css(styles.container)}>
