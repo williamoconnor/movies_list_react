@@ -1,11 +1,15 @@
-import React, { PureComponent, PropTypes } from 'react';
 import { css, StyleSheet } from 'aphrodite';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#f00',
-		height: '100vw',
-		width: '100vh',
+		height: '100vh',
+		width: '100vw',
+		position: 'absolute',
+		top: 0,
+		left: 0,
 	},
 });
 
