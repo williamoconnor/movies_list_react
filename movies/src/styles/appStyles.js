@@ -1,5 +1,5 @@
-import { css, Stylesheet } from 'aphrodite';
+import { StyleSheet } from 'aphrodite';
 
-export default const appStyles = Stylesheet.create({
+export default const appStyles = StyleSheet.create({
 
 });
