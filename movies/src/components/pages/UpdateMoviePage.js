@@ -1,7 +1,7 @@
-import Page from './Page';
+import Page from '../Page';
 import React, { PureComponent } from 'react';
 
-export default class MyVideosPage extends PureComponent {
+export default class UpdateMoviePage extends PureComponent {
 	render() {
 		return (
 			<Page>

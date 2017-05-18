@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
 		width: '100vw',
 	},
 	content: {
-		backgroundColor: colors.blue1,
 		margin: 'auto',
 		maxWidth: 1000,
 	},
@@ -21,9 +20,11 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.blue1,
 		color: colors.white,
 		letterSpacing: 1.4,
-		position: 'absolute',
+		// position: 'absolute',
 		textAlign: 'center',
-		top: 0,
+		marginTop: 0,
+		paddingTop: 40,
+		paddingBottom: 40,
 		width: '100%',
 	},
 });
