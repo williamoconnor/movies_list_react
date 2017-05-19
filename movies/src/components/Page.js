@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
 		height: '100vh',
 		left: 0,
 		position: 'absolute',
+		textAlign: 'center',
 		top: 0,
 		width: '100vw',
 	},
