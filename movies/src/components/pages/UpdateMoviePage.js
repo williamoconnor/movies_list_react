@@ -20,7 +20,7 @@ export default class UpdateMoviePage extends PureComponent {
 	constructor(props) {
 		super(props);
 
-		const movieID = props.params.id;
+		const movieID = parseInt(props.params.id, 10);
 		this._setMovieWithID(movieID);
 	}
 
@@ -36,7 +36,7 @@ export default class UpdateMoviePage extends PureComponent {
 
 		const movieArr = movies.filter(movie => movie.id === id);
 		if (movieArr.length === 0) {
-			browserHistory.push('my-movies');
+			browserHistory.push('/my-movies');
 		} else {
 			this.state = {
 				movie: movieArr[0],
@@ -44,12 +44,25 @@ export default class UpdateMoviePage extends PureComponent {
 		}
 	}
 
+	_updateMovie = (u_movie) => {
+		const lsMoviesJSON = localStorage.getItem(storageKeys.lsKey);
+		const lsMovies = JSON.parse(lsMoviesJSON);
+		const movies = lsMovies[storageKeys.key].map(movie => {
+			return movie.id === u_movie.id ? u_movie : movie;
+		});
+
+		const moviesStore = {};
+		moviesStore[storageKeys.key] = movies;
+		localStorage.setItem(storageKeys.lsKey, JSON.stringify(moviesStore));
+		browserHistory.push('/my-movies');
+	}
+
 	render() {
 		return (
 			<Page>
 				<div className={css(styles.container)}>
 					<h2>Update Movie</h2>
-					<MovieForm movie={this.state.movie} />
+					<MovieForm movie={this.state.movie} submitLabel="Update Movie" submitAction={this._updateMovie} />
 				</div>
 			</Page>
 		);

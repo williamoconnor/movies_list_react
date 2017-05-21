@@ -1,6 +1,4 @@
 import * as colors from '../colors';
-import * as storageKeys from '../storageKeys';
-import browserHistory from 'react-router/lib/browserHistory';
 import { css, StyleSheet } from 'aphrodite';
 import ActorsInput from './ActorsInput';
 import Button from './Button';
@@ -21,12 +19,12 @@ const styles = StyleSheet.create({
 	},
 });
 
-const ratingOptions = [1, 2, 3, 4, 5];
+const ratingOptions = ['1', '2', '3', '4', '5'];
 
 const initialState = {
 	actors: [],
 	genre: '',
-	rating: 5,
+	rating: '',
 	title: '',
 	year: '',
 };
@@ -34,6 +32,8 @@ const initialState = {
 export default class MovieForm extends PureComponent {
 	static propTypes = {
 		movie: PropTypes.object,
+		submitAction: PropTypes.func.isRequired,
+		submitLabel: PropTypes.string.isRequired,
 	};
 
 	constructor(props) {
@@ -78,19 +78,8 @@ export default class MovieForm extends PureComponent {
 		});
 	};
 
-
-	_save = () => {
-		const lsMoviesJSON = localStorage.getItem(storageKeys.lsKey);
-		const moviesObj = JSON.parse(lsMoviesJSON);
-		moviesObj[storageKeys.key] = moviesObj[storageKeys.key].concat({
-			...this.state,
-			id: moviesObj[storageKeys.key].length,
-		});
-		localStorage.setItem(storageKeys.lsKey, JSON.stringify(moviesObj));
-		this.setState({
-			...initialState,
-		});
-		browserHistory.push('/my-movies');
+	_submit = () => {
+		this.props.submitAction(this.state);
 	}
 
 	render() {
@@ -101,8 +90,8 @@ export default class MovieForm extends PureComponent {
 					<ActorsInput actors={this.state.actors} addActor={this._actorAdded} removeActor={this._actorRemoved} />
 					<TextInput onChange={this._genreChanged} placeholder="Genre" value={this.state.genre} />
 					<TextInput onChange={this._yearChanged} placeholder="Year" value={this.state.year} />
-					<Dropdown onChange={this._ratingChanged} options={ratingOptions} value={this.state.rating} />
-					<Button onClick={this._save} label={'Add Movie'} />
+					<Dropdown label="Rating" onChange={this._ratingChanged} options={ratingOptions} value={this.state.rating} />
+					<Button onClick={this._submit} label={this.props.submitLabel} />
 					<div className={css(styles.cancel)}>
 						<a className={css(styles.cancel)} href="/my-videos">Cancel</a>
 					</div>

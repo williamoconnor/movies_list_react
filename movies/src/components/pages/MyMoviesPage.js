@@ -32,8 +32,8 @@ export default class MyMoviesPage extends PureComponent {
 		browserHistory.push('/add-movie');
 	}
 
-	_removeMovie = (r_movie) => {
-		const movies = this.state.movies.filter(movie => movie.id !== r_movie.id);
+	_removeMovie = (movieID) => {
+		const movies = this.state.movies.filter(movie => movie.id !== movieID);
 
 		const moviesStore = {};
 		moviesStore[storageKeys.key] = movies;
@@ -76,7 +76,7 @@ export default class MyMoviesPage extends PureComponent {
 				<div>
 					<h2>My Movies</h2>
 					<TextInput placeholder="Search" onChange={this._searchTermChanged} value={this.state.searchTerm} />
-					<MoviesList movies={this.state.filteredMovies} removeMovie={this._removeMovie} />
+					<MoviesList movies={this.state.filteredMovies} removeMovie={this._removeMovie} updateMovie={this._updateMovie}/>
 					<Button className={css(styles.addMovieButton)} label="Add Movie" onClick={this._addMovieClicked} />
 				</div>
 			</Page>

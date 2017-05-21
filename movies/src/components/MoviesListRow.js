@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
 		color: colors.blue1,
 		fontSize: 12,
 		marginBottom: 8,
+		':hover': {
+			cursor: 'pointer',
+		},
 	},
 	x: {
 		color: colors.red,
@@ -50,8 +53,8 @@ export default class MoviesListRow extends PureComponent {
 	};
 
 	_updateMovie = () => {
-		this.props.updateMovie(this.props.movie.id)
-	}
+		this.props.updateMovie(this.props.movie.id);
+	};
 
 	render() {
 		return (
